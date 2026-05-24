@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLoveGPA | GPA Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <header>
+        <div class="badge">International Academic Tool</div>
+        <h1>iLove<span>.GPA</span></h1>
+        <p>Professional GPA Calculator for every educational system.</p>
+    </header>
+
+    <div class="tabs-wrapper">
+        <div class="tabs">
+            <button class="tab-btn" onclick="showTab('american', this)">🇺🇸 American</button>
+            <button class="tab-btn" onclick="showTab('british', this)">🇬🇧 British</button>
+            <button class="tab-btn" onclick="showTab('igcse', this)">📘 IGCSE</button>
+            <button class="tab-btn active" onclick="showTab('stem', this)">🔬 STEM</button>
+            <button class="tab-btn" onclick="showTab('thanaweya', this)">🇪🇬 Thanaweya</button>
+        </div>
+    </div>
+    <main>
+        <div class="section" id="tab-american">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">🎓</div>
+                    <div>
+                        <h2>American GPA Calculator</h2>
+                        <p class="desc">4.0 scale used by US colleges and universities. Enter course name, letter grade, and credict hours.</p>
+                    </div>
+                </div>
+                <div class="info-box">GPA = Total Quality Points ÷ Total Credict Hours. Each course carries credit hours (usually 3-4).</div>
+            
+                <div class="col-labels grid-3" >
+                    <span>Course Name</span><span>Grade</span><span>Credits</span><span></span>
+                </div>
+                <div class="courses" id="american-courses"></div>
+                <div class="actions">
+                    <button class="btn btn-ghost" onclick="addRow('american')">+ Add Course</button>
+                    <button class="btn btn-primary" onclick="calcAmerican('american')">Calculate GPA</button>
+                    <button class="btn btn-ghost" onclick="clearAll('american')">Reset</button>
+                </div>
+                <div class="result-card" id="american-result">
+                    <div class="gpa-number" id="american-gpa">0.00</div>
+                    <div class="gpa-label">Cumulative GPA (4.0 Scale)</div>
+                    <div class="grade-badge" id="american-letter">-</div>
+                    <div class="standing" id="american-status"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📋</div>
+                    <div><h2>Grade Scale Reference</h2><p class='desc'>American 4.0 grading scale</p></div>
+                </div>
+                <table class="scale-table">
+                    <tr><th>Letter</th><th>Percentage</th><th>GPA Points</th><th>Standing</th></tr>
+                    <tr><td>A+ / A</td><td>93–100%</td><td>4.0</td><td>Excellent</td></tr>
+                    <tr><td>A−</td><td>90–92%</td><td>3.7</td><td>Excellent</td></tr>
+                    <tr><td>B+</td><td>87–89%</td><td>3.3</td><td>Very Good</td></tr>
+                    <tr><td>B</td><td>83–86%</td><td>3.0</td><td>Good</td></tr>
+                    <tr><td>B−</td><td>80–82%</td><td>2.7</td><td>Good</td></tr>
+                    <tr><td>C+</td><td>77–79%</td><td>2.3</td><td>Satisfactory</td></tr>
+                    <tr><td>C</td><td>73–76%</td><td>2.0</td><td>Satisfactory</td></tr>
+                    <tr><td>C−</td><td>70–72%</td><td>1.7</td><td>Passing</td></tr>
+                    <tr><td>D+</td><td>67–69%</td><td>1.3</td><td>Poor</td></tr>
+                    <tr><td>D</td><td>63–66%</td><td>1.0</td><td>Poor</td></tr>
+                    <tr><td>D−</td><td>60–62%</td><td>0.7</td><td>Poor</td></tr>
+                    <tr><td>F</td><td>Below 60%</td><td>0.0</td><td>Failing</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="section" id="tab-british">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">🎯</div>
+                    <div>
+                        <h2>British Degree Classification</h2>
+                        <p class="desc">UK Honours degree system. Enter module name, percentage mark (0-100), and credit weighting.</p>
+                    </div>
+                </div>
+                <div class="info-box">Weighted average percentage determines your degree classification: First, 2:1, 2:2, or Third.</div>
+                
+                <div class="col-labels grid-3">
+                    <span>Module Name</span><span>Mark %</span><span>Credits</span><span></span>
+                </div>
+                <div class="courses" id="british-courses"></div>
+                <div class="action">
+                    <button class="btn btn-ghost" onclick="addRow('british')">+ Add Module</button>
+                    <button class="btn btn-primary" onclick="calcBritish()">Calculate Grade</button>
+                    <button class="btn btn-ghost" onclick="clearAll('british')">Reset</button>
+                </div>
+
+                <div class="result-card" id="british-result">
+                    <div class="gpa-number" id="british-gpa">0%</div>
+                    <div class="gpa-label">Weighted Average Mark</div>
+                    <div class="gpa-badge" id="british-letter">-</div>
+                    <div class="standing" id="british-status"></div>
+                </div>
+            </div>
+
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📋</div>
+                    <div><h2>UK Degree Classifications</h2><p class="desc">Honours degree grading boundaries</p></div>
+                </div>
+                <table class="scale-table">
+                    <tr><th>Classification</th><th>Percentage</th><th>Abbreviation</th></tr>
+                    <tr><td>First Class Honours</td><td>70% and above</td><td>1st</td></tr>
+                    <tr><td>Upper Second Class</td><td>60–69%</td><td>2:1</td></tr>
+                    <tr><td>Lower Second Class</td><td>50–59%</td><td>2:2</td></tr>
+                    <tr><td>Third Class Honours</td><td>40–49%</td><td>3rd</td></tr>
+                    <tr><td>Fail</td><td>Below 40%</td><td>—</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section" id="tab-igcse">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📘</div>
+                    <div>
+                        <h2>IGCSE Grade Calculator</h2>
+                        <p class="desc">Cambridge IGCSE (A*-U). Select the grade for eachs subject and set a weight (default 1).</p>
+                    </div>
+                </div>
+                <div class="info-box">Average Grade Point = Sum of (Grade Points × Weight) ÷ Total Weight.</div>
+
+                <div class="col-labels grid-3">
+                    <span>Subject Name</span><span>Grade</span><span>Weight</span><span></span>
+                </div>
+                <div class="courses" id="igcse-courses"></div>
+                <div class="actions">
+                    <button class="btn btn-ghost" onclick="addRow('igcse')">+ Add Subject</button>
+                    <button class="btn btn-primary" onclick="calcIGCSE()">Calculate Average</button>
+                    <button class="btn btn-ghost" onclick="clearAll('igcse')">Reset</button>
+                </div>
+                <div class="result-card" id="igcse-result">
+                    <div class="gpa-number" id="igcse-gpa">-</div>
+                    <div class="gpa-label">Average Grade Point</div>
+                    <div class="gpa-badge" id="igcse-letter">-</div>
+                    <div class="standing" id="igcse-status"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📋</div>
+                    <div><h2>IGCSE Grade Scale</h2><p class='desc'>Cambridge International Education</p></div>
+                </div>
+                <table class="scale-table">
+                    <tr><th>Grade</th><th>Description</th><th>Points</th></tr>
+                    <tr><td>A*</td><td>Outstanding</td><td>9</td></tr>
+                    <tr><td>A</td><td>Excellent</td><td>8</td></tr>
+                    <tr><td>B</td><td>Very Good</td><td>7</td></tr>
+                    <tr><td>C</td><td>Good — Pass</td><td>6</td></tr>
+                    <tr><td>D</td><td>Satisfactory</td><td>5</td></tr>
+                    <tr><td>E</td><td>Average</td><td>4</td></tr>
+                    <tr><td>F</td><td>Below Average</td><td>3</td></tr>
+                    <tr><td>G</td><td>Minimum</td><td>2</td></tr>
+                    <tr><td>U</td><td>Ungraded</td><td>0</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section active" id="tab-stem">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">🔬</div>
+                    <div>
+                        <h2>STEM GPA Calculator</h2>
+                        <p class="desc">Select your university type and choose the letter grade for each subject. The calculator coverts grades to GPA points automatically.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 18px">
+                    <label style="font-size: 0.8em; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display:block; margin-bottom: 8px" for="">University / Institution Type</label>
+                    <div id="stem-uni-selector" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <button class="uni-btn active" onclick="selectUni('standard4', this)">🎓 Standard 4.0</button>
+                        <button class="uni-btn" onclick="selectUni('plus4', this)">🏛️ 4.0 with A+ = 4.3</button>
+                        <button class="uni-btn" onclick="selectUni('scale5', this)">🔭 5.0 Scale (Research)</button>
+                        <button class="uni-btn" onclick="selectUni('percentage', this)">📊 Percentage Based</button>
+                        <button class="uni-btn" onclick="selectUni('pass_fail', this)">✅ Pass / Fail</button>
+                    </div>
+                    <div id="stem-uni-desc" style="margin-top: 10px; padding: 10px 14px; background: var(--surface2); border-left: 3px solid var(--purple-lt); border-radius: 0 10px 10px 0; font-size: 0.82em; color: var(--accent); font-weight: 500;">
+                        Standard 4.0 scale used by most US and international STEM universities. A/A+ = 4.0, B+ = 3.3, B = 3.0 …
+                    </div>
+                </div>
+
+                <div class="col-labels grid-2" id="stem-col-labels">
+                    <span>Subject Name</span><span>Letter Grade</span><span></span>
+                </div>
+                <div class="courses" id="stem-courses"></div>
+                <div class="actions">
+                    <button class="btn btn-ghost" onclick="addRow('stem')">+ Add Subject</button>
+                    <button class="btn btn-primary" onclick="calcSTEM()">Calculate GPA</button>
+                    <button class="btn btn-ghost" onclick="clearAll('stem')">Reset</button>
+                </div>
+                <div class="result-card" id="stem-result">
+                    <div class="gpa-number" id="stem-gpa">0.00</div>
+                    <div class="gpa-label" id="stem-gpa-label">STEM GPA (4.0 Scale)</div>
+                    <div class="grade-badge" id="stem-letter">-</div>
+                    <div class="standing" id="stem-status"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📋</div>
+                    <div><h2>Letter Grade → GPA Reference</h2><p class='desc'>Grade point values by university type</p></div>
+                </div>
+                <table class="scale-table">
+                    <tr><th>Letter</th><th>Standard 4.0</th><th>4.0 + A+ = 4.3</th><th>5.0 Scale</th><th>% Based</th></tr>
+                    <tr><td>A+ / A</td><td>4.0</td><td>4.3 / 4.0</td><td>5.0</td><td>95–100%</td></tr>
+                    <tr><td>A−</td><td>3.7</td><td>3.7</td><td>4.7</td><td>90–94%</td></tr>
+                    <tr><td>B+</td><td>3.3</td><td>3.3</td><td>4.3</td><td>85–89%</td></tr>
+                    <tr><td>B</td><td>3.0</td><td>3.0</td><td>4.0</td><td>80–84%</td></tr>
+                    <tr><td>B−</td><td>2.7</td><td>2.7</td><td>3.7</td><td>75–79%</td></tr>
+                    <tr><td>C+</td><td>2.3</td><td>2.3</td><td>3.3</td><td>70–74%</td></tr>
+                    <tr><td>C</td><td>2.0</td><td>2.0</td><td>3.0</td><td>65–69%</td></tr>
+                    <tr><td>C−</td><td>1.7</td><td>1.7</td><td>2.7</td><td>60–64%</td></tr>
+                    <tr><td>D+</td><td>1.3</td><td>1.3</td><td>2.3</td><td>55–59%</td></tr>
+                    <tr><td>D</td><td>1.0</td><td>1.0</td><td>2.0</td><td>50–54%</td></tr>
+                    <tr><td>F</td><td>0.0</td><td>0.0</td><td>0.0</td><td>Below 50%</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section" id="tab-thanaweya">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">🇪🇬</div>
+                    <div>
+                        <h2>Thanaweya Amma Calculator</h2>
+                        <p class="desc">Egyptian General Secondary Certificate. Enter your score for each subject (within the maximum shown).</p>
+                    </div>
+                </div>
+                <div class="info-box">Fill in the track you sat (Scientific or Literary), then click Calculate. Total is computed out of the corresponding maximmum.</div>
+            
+                <div class="track-title">Scientific Track</div>
+                <div class="grades-grid" id="than-sci-grid"></div>
+
+                <div class="track-title">Literary Track</div>
+                <div class="grades-grid" id="than-lit-grid"></div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="calcThan('sci')">Calculate Scientific</button>
+                    <button class="btn btn-ghost" onclick="calcThan('lit')">Calculate Literary</button>
+                    <button class="btn btn-ghost" onclick="clearThan()">Clear All</button>
+                </div>
+
+                <div class="results-card" id="than-result">
+                    <div class="gpa-number" id="than-total">0</div>
+                    <div class="gpa-label" id="than-out-of">out of -</div>
+                    <div class="grade-badge" id="than-percent">0%</div>
+                    <div class="standing" id="than-status"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📋</div>
+                    <div><h2>Egyptian Grading Scale</h2><p class="desc">Percentage to classification boundaries</p></div>
+                </div>
+                <table class="scale-table">
+                    <tr><th>Percentage</th><th>Classification</th></tr>
+                    <tr><td>85% and above</td><td>Excellent</td></tr>
+                    <tr><td>75–84%</td><td>Very Good</td></tr>
+                    <tr><td>65–74%</td><td>Good</td></tr>
+                    <tr><td>50–64%</td><td>Pass</td></tr>
+                    <tr><td>Below 50%</td><td>Fail</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+  iLoveGPA &nbsp;·&nbsp; American &nbsp;·&nbsp; British &nbsp;·&nbsp; IGCSE &nbsp;·&nbsp; STEM &nbsp;·&nbsp; Egyptian Thanaweya
+        </footer>
+    </main>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
