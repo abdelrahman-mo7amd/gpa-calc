@@ -23,11 +23,11 @@ its a GPA calculator. thats it. but it support more than one system and not just
 
 | System | thing |
 |---|---|
-| 🇺🇸 American | normal GPA stuff, letters and credit hours and all that |
-| 🇬🇧 British | first and 2:1 and 2:2 and those things i always forget |
-| 📘 IGCSE | A* and A and B and every thing |
-| 🔬 STEM | put percentage and it do some math magic |
-| 🇪🇬 Thanaweya Amma | type score and pray for good result |
+| American | normal GPA stuff, letters and credit hours and all that |
+| British | first and 2:1 and 2:2 and those things i always forget |
+| IGCSE | A* and A and B and every thing |
+| STEM | put percentage and it do some math magic |
+| Thanaweya Amma | type score and pray for good result |
 
 ---
 
