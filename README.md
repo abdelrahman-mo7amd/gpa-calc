@@ -1,63 +1,48 @@
 # iLove.GPA ✨
 
-> *because manually doing math after a midterm or finals is just cruelty*
+> because doing GPA math by hand is pain and i dont wanna do it anymore
+
+---
+## AI Delarition:
+
+used AI in making the root variables, the color pallete.
 
 ---
 
-## what even is this? 👀
+## what is this even 😭
 
-okay so you know that panic when you're starting at your grades like 👁️👄👁️ trying to figure out if you passed? yeah. **iLove.GPA** fixes that.
+so basically after exams or midterms or whatever, everybody starts calculating grades and doing weird math on papers and calculators and still somehow get different answers every time.
 
-It's a **premium, one-page GPA calculator** that actually supports the system your school uses - not just "American" and calling it a day.
+so i made **iLove.GPA** because i was tired of that.
+
+its a GPA calculator. thats it. but it support more than one system and not just the american one like most websites does.
 
 ---
 
-## what it does 🔥
+## what it do
 
-| System | Vibe|
+| System | thing |
 |---|---|
-| 🇺🇸 **American** | classic 4.0 scale, letter grades, credit hours, the whole thing |
-| 🇬🇧 **British** | First / 2:1 / 2:2 - yes we respect the UK grind |
-| 📘 **IGCSE** | A* to G, weighted average, Cambridge would be proud | 
-| 🔬 **STEM** | percentage-based, converts to 4.0 so you feel fancy | 
-| 🇪🇬 **Thanaweya Amma** | just type your scores (99, 84...) and cry or celebrate |
+| 🇺🇸 American | normal GPA stuff, letters and credit hours and all that |
+| 🇬🇧 British | first and 2:1 and 2:2 and those things i always forget |
+| 📘 IGCSE | A* and A and B and every thing |
+| 🔬 STEM | put percentage and it do some math magic |
+| 🇪🇬 Thanaweya Amma | type score and pray for good result |
 
 ---
 
-## how to run it
+## how run it
 
-literally just open `index.html` in your browser. no npm, no node, no suffering.
+its very easy honestly.
 
-```
-index.html -> open this
-style.css  -> makes it look 🔥
-app.js     -> the big brain
-```
-zero dependencies. zero setup. zero excuses.
+just open index.html
 
----
+thats all.
 
-## tech stack 🛠️
+no npm.
 
-- **HTML** - structure
-- **CCC** - it's giving premium
-- **Vanilla JS** - no frameworks were harmed in the making of this project
+no node.
 
----
- 
-## who is this for? 🙋
- 
-- students who need to know if they're on Dean's List or academic probation (no judgment)
-- Egyptian students calculating their ثانوية عامة score at 2am
-- literally anyone who's ever said *"wait what's my GPA though"*
----
- 
-## a note from the dev 💅
- 
-this was built with love, late nights, and the belief that **you deserve to know your GPA in under 5 seconds.**
- 
-go get that A. or at least a B+. you've got this. 📈
- 
----
- 
-*made with 💜 | iLove.GPA*
+no downloading 700 packages.
+
+no stackoverflow tabs open.
